@@ -20,8 +20,8 @@
 #include <ctype.h>
 
 #define LEDPIN	        13  // The usual Arduino LED port...
-#define USERWAITTIME  6000  // ms
-#define LEDWAITTIME     35  // ms
+#define USERWAITTIME  6000  // milliseconds
+#define LEDWAITTIME     35  // milliseconds
 
 // Many non-trivial Arduino programs benefit from being expressed as a state machine.
 // This one encodes the various nuances of accepting user input while still doing
@@ -49,16 +49,21 @@ char          userinput;
 boolean       ledBrightness = HIGH;
 String        validInput = "YN";
 
-void setup() { 
-   //Initialize serial and wait for port to open:
-   Serial.begin(9600); 
-   while (!Serial) {
-       ; // wait for serial port to connect. Needed for Leonardo only
+void setup() 
+{ 
+  //set the LED pin as an output
+  pinMode(LEDPIN,OUTPUT);
+
+  //Initialize serial and wait for port to open:
+  Serial.begin(9600); 
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for Leonardo only
    }
-   state = INIT;               
+  state = INIT;               
 }
 
-void loop() {
+void loop() 
+{
     // Every time through loop(), the state variable controls what we do.
     // As things get done, the state variable is updated to hold the next state.
     // The power of a state machine is that it can clearly describe the program 
@@ -94,12 +99,12 @@ void loop() {
                         // The whole point is to make the flashpattern invert when the user says "Y"
                         if (userinput == 'Y') ledBrightness = !ledBrightness;
 	 		state = NEEDINPUT;
-                        break;
+      break;
     default:
     case ERROR:		Serial.println(" Braap!");
 			Serial.print("Expected ["); Serial.print(validInput); Serial.println("], please follow directions!");
 			state = NEEDINPUT;
-                        break;
+      break;
     }
 
     if (pulserate > LEDWAITTIME) {
