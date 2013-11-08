@@ -156,5 +156,3 @@ void elapsedmillisloop() {
 	em = 0;							// reset the counter to 0 so the counting starts over...
   }
 }
-
-
