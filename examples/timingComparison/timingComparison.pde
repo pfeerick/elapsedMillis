@@ -76,9 +76,9 @@ void setup() {
   pinMode(led, OUTPUT);     
 }
 
-elapsedMillis em;					// used by elapsedmilis example
-									// Globally scoped - see comment above
-									
+elapsedMillis elapsedTime;    // used by elapsedmilis example
+                              // Globally scoped - see comment above
+
 unsigned long lasttime = millis();	// used by millis() example...
 
 unsigned int interval = 1000;
@@ -150,9 +150,9 @@ void elapsedmillisloop() {
   //      update motor driver output
   // and, finally, blink the lights:
 
-  if (em > interval) {				// Again, note that "em" is global scope
+  if (elapsedTime > interval) {				// Again, note that "elapsedTime" is global scope
 	ledState = !ledState;			// toggle the state from HIGH to LOW to HIGH to LOW ... 
 	digitalWrite(led, ledState);
-	em = 0;							// reset the counter to 0 so the counting starts over...
+	elapsedTime = 0;							// reset the counter to 0 so the counting starts over...
   }
 }
