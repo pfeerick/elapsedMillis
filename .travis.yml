@@ -18,7 +18,8 @@ script:
   - arduino --verify --board arduino:avr:uno $PWD/examples/timingComparison/timingComparison.ino
 
 
-#notifications:
-#  email:
-#    on_success: change
-#    on_failure: change
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+	
