@@ -8,9 +8,9 @@ before_install:
   - sudo mv arduino-1.6.5 /usr/local/share/arduino
   - sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
 
-#install:
+install:
   - ln -s $PWD /usr/local/share/arduino/libraries/elapsedMillis
-  - arduino --install-library "elapsedMillis"
+#  - arduino --install-library "elapsedMillis"
 
 script:
   - arduino --verify --board arduino:avr:uno $PWD/examples/GettingStarted/GettingStarted.ino
