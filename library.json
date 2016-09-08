@@ -1,0 +1,11 @@
+{
+	"name": "elapsedMillis",
+	"keywords": "timing, delay",
+	"description": "Library for making responsive code easier using elapsed time objects",
+	"repository":
+	{
+		"type": "git",
+		"url": "https://github.com/pfeerick/elapsedMillis.git"
+	},
+	"frameworks": "arduino",
+}
