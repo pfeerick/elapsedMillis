@@ -7,5 +7,5 @@
 		"type": "git",
 		"url": "https://github.com/pfeerick/elapsedMillis.git"
 	},
-	"frameworks": "arduino",
+	"frameworks": "arduino"
 }
