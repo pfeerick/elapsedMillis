@@ -2,6 +2,20 @@
 	"name": "elapsedMillis",
 	"keywords": "timing, delay",
 	"description": "Library for making responsive code easier using elapsed time objects",
+	"authors":
+	[
+		{
+		"name": "Paul Stoffregen",
+		"email": "paul@pjrc.com",
+		"url": "http://pjrc.com/about/contact.html"
+		},
+		{
+		"name": "Peter Feerick",
+		"email": "peter.feerick@gmail.com",
+		"url": "https://blog.peterfeerick.com.au/contact/",
+		"maintainer": true
+		}
+	]	
 	"repository":
 	{
 		"type": "git",
