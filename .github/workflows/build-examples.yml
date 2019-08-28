@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v1
-      - name: Compile examples using Arduion Uno
+      - name: Compile examples using Arduino Uno
         uses: pfeerick/arduino-builder-action@master
         with:
           board: "arduino:avr:uno"
