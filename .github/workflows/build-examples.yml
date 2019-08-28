@@ -1,17 +1,15 @@
-
-name: build-examples
+name: build
 
 on: push
 
 jobs:
   build:
+    name: build-examples
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout
+      - name: Checkout repo
         uses: actions/checkout@v1
-      - 
-        name: Build all example sketches (UNO)
+      - name: Compile examples using Arduion Uno
         uses: pfeerick/arduino-builder-action@master
         with:
           board: "arduino:avr:uno"
