@@ -71,25 +71,26 @@
 int led = 13;
 
 // the setup routine runs once when you press reset:
-void setup() {                
+void setup()
+{
   // initialize the digital pin as an output.
-  pinMode(led, OUTPUT);     
+  pinMode(led, OUTPUT);
 }
 
-elapsedMillis elapsedTime;    // used by elapsedmilis example
-                              // Globally scoped - see comment above
+elapsedMillis elapsedTime; // used by elapsedmilis example
+                           // Globally scoped - see comment above
 
-unsigned long lasttime = millis();	// used by millis() example...
+unsigned long lasttime = millis(); // used by millis() example...
 
 unsigned int interval = 1000;
 boolean ledState = LOW;
 
-void loop() {
+void loop()
+{
   // delayloop();
   // millisloop();
   elapsedmillisloop();
 }
-
 
 // ##########################  delay() based loop ###########################
 //
@@ -99,15 +100,15 @@ void loop() {
 //
 // In this example, the LED blinks on and off once per invocation of loop()
 
-void delayloop() {
+void delayloop()
+{
   // Note that any "real code" you put here will cause the time between blinks to grow
-  delay(1000);                 // wait for a second
+  delay(1000); // wait for a second
   // and, finally, blink the lights:
 
-  ledState = !ledState;			// toggle the state from HIGH to LOW to HIGH to LOW ... 
+  ledState = !ledState; // toggle the state from HIGH to LOW to HIGH to LOW ...
   digitalWrite(led, ledState);
 }
-
 
 // ##########################  millis() based loop ###########################
 //
@@ -119,7 +120,8 @@ void delayloop() {
 // of course, that the desired blink interval is significantly larger than than that "other"
 // time)
 
-void millisloop() {
+void millisloop()
+{
 
   // your "real" code goes here:
   //      read sensors
@@ -127,10 +129,11 @@ void millisloop() {
   //      update motor driver output
   // and, finally, blink the lights:
 
-  if (millis() - lasttime >= interval) {
-	ledState = !ledState;			// toggle the state from HIGH to LOW to HIGH to LOW ... 
-	digitalWrite(led, ledState);
-	lasttime = millis();
+  if (millis() - lasttime >= interval)
+  {
+    ledState = !ledState; // toggle the state from HIGH to LOW to HIGH to LOW ...
+    digitalWrite(led, ledState);
+    lasttime = millis();
   }
 }
 
@@ -142,7 +145,8 @@ void millisloop() {
 // This example is almost the same as the millis() one, with the various accounting details
 // abstracted by the new datatype.
 
-void elapsedmillisloop() {
+void elapsedmillisloop()
+{
 
   // your "real" code goes here:
   //      read sensors
@@ -150,9 +154,10 @@ void elapsedmillisloop() {
   //      update motor driver output
   // and, finally, blink the lights:
 
-  if (elapsedTime > interval) {				// Again, note that "elapsedTime" is global scope
-	ledState = !ledState;			// toggle the state from HIGH to LOW to HIGH to LOW ... 
-	digitalWrite(led, ledState);
-	elapsedTime = 0;							// reset the counter to 0 so the counting starts over...
+  if (elapsedTime > interval)
+  {                       // Again, note that "elapsedTime" is global scope
+    ledState = !ledState; // toggle the state from HIGH to LOW to HIGH to LOW ...
+    digitalWrite(led, ledState);
+    elapsedTime = 0; // reset the counter to 0 so the counting starts over...
   }
 }
