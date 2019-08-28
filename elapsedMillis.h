@@ -77,7 +77,6 @@ public:
 	elapsedMillis operator + (unsigned long val) const { elapsedMillis r(*this); r.ms -= val; return r; }
 };
 
-
 class elapsedSeconds
 {
 private:
