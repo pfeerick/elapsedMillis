@@ -1,0 +1,11 @@
+name: Build examples
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Build all example sketches
+      uses: pfeerick/arduino-builder-action@master
+      with:
+        board: "arduino:avr:uno"
