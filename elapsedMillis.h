@@ -82,12 +82,12 @@ class elapsedSeconds
 private:
 	unsigned long s;
 public:
-	elapsedSeconds(void) { s = millis()*0.001; }
-	elapsedSeconds(unsigned long val) { s = millis()*0.001 - val; }
+	elapsedSeconds(void) { s = millis()/1000; }
+	elapsedSeconds(unsigned long val) { s = millis()/1000 - val; }
 	elapsedSeconds(const elapsedSeconds &orig) { s = orig.s; }
-	operator unsigned long () const { return millis()*0.001 - s; }
+	operator unsigned long () const { return millis()/1000 - s; }
 	elapsedSeconds & operator = (const elapsedSeconds &rhs) { s = rhs.s; return *this; }
-	elapsedSeconds & operator = (unsigned long val) { s = millis()*0.001 - val; return *this; }
+	elapsedSeconds & operator = (unsigned long val) { s = millis()/1000 - val; return *this; }
 	elapsedSeconds & operator -= (unsigned long val)      { s += val ; return *this; }
 	elapsedSeconds & operator += (unsigned long val)      { s -= val ; return *this; }
 	elapsedSeconds operator - (int val) const           { elapsedSeconds r(*this); r.s += val; return r; }
