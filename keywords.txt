@@ -8,6 +8,7 @@
 
 elapsedMillis	KEYWORD1
 elapsedMicros	KEYWORD1
+elapsedSeconds  KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -16,4 +17,3 @@ elapsedMicros	KEYWORD1
 #######################################
 # Constants (LITERAL1)
 #######################################
-
