@@ -83,11 +83,11 @@ private:
 	unsigned long s;
 public:
 	elapsedSeconds(void) { s = millis()/1000; }
-	elapsedSeconds(unsigned long val) { s = millis()/1000 - val; }
+	elapsedSeconds(unsigned long val) { s = (millis() / 1000 - val) & 0xFFFFFFFF; }
 	elapsedSeconds(const elapsedSeconds &orig) { s = orig.s; }
-	operator unsigned long () const { return millis()/1000 - s; }
+	operator unsigned long () const { return ((millis() / 1000) - s) & 0xFFFFFFFF; }
 	elapsedSeconds & operator = (const elapsedSeconds &rhs) { s = rhs.s; return *this; }
-	elapsedSeconds & operator = (unsigned long val) { s = millis()/1000 - val; return *this; }
+	elapsedSeconds & operator = (unsigned long val) { s = (millis() / 1000 - val) & 0xFFFFFFFF; return *this; }
 	elapsedSeconds & operator -= (unsigned long val)      { s += val ; return *this; }
 	elapsedSeconds & operator += (unsigned long val)      { s -= val ; return *this; }
 	elapsedSeconds operator - (int val) const           { elapsedSeconds r(*this); r.s += val; return r; }
