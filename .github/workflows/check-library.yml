@@ -1,9 +1,20 @@
-on: [push, pull_request]
+name: Checks
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: arduino/arduino-lint-action@v1
+      - name: Arduino Lint checks
+        uses: arduino/arduino-lint-action@v1
         with:
+          compliance: strict
           library-manager: update
+          project-type: library
+      - name: Check for symlinks
+        run: find * -type l -printf "::error::%p is a symlink. This is forbidden by the Arduino Library Specification." -exec false {} +
