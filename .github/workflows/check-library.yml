@@ -1,4 +1,9 @@
-on: [push, pull_request]
+name: Checks
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   lint:
