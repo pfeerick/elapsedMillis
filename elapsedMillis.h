@@ -80,24 +80,25 @@ public:
 class elapsedSeconds
 {
 private:
-	unsigned long s;
+	unsigned long ms;
+    const unsigned long msPerSec = 1000;
 public:
-	elapsedSeconds(void) { s = millis()/1000; }
-	elapsedSeconds(unsigned long val) { s = millis()/1000 - val; }
-	elapsedSeconds(const elapsedSeconds &orig) { s = orig.s; }
-	operator unsigned long () const { return millis()/1000 - s; }
-	elapsedSeconds & operator = (const elapsedSeconds &rhs) { s = rhs.s; return *this; }
-	elapsedSeconds & operator = (unsigned long val) { s = millis()/1000 - val; return *this; }
-	elapsedSeconds & operator -= (unsigned long val)      { s += val ; return *this; }
-	elapsedSeconds & operator += (unsigned long val)      { s -= val ; return *this; }
-	elapsedSeconds operator - (int val) const           { elapsedSeconds r(*this); r.s += val; return r; }
-	elapsedSeconds operator - (unsigned int val) const  { elapsedSeconds r(*this); r.s += val; return r; }
-	elapsedSeconds operator - (long val) const          { elapsedSeconds r(*this); r.s += val; return r; }
-	elapsedSeconds operator - (unsigned long val) const { elapsedSeconds r(*this); r.s += val; return r; }
-	elapsedSeconds operator + (int val) const           { elapsedSeconds r(*this); r.s -= val; return r; }
-	elapsedSeconds operator + (unsigned int val) const  { elapsedSeconds r(*this); r.s -= val; return r; }
-	elapsedSeconds operator + (long val) const          { elapsedSeconds r(*this); r.s -= val; return r; }
-	elapsedSeconds operator + (unsigned long val) const { elapsedSeconds r(*this); r.s -= val; return r; }
+	elapsedSeconds(void) { ms = millis(); }
+	elapsedSeconds(unsigned long val) { ms = millis() - val * msPerSec; }
+	elapsedSeconds(const elapsedSeconds &orig) { ms = orig.ms; }
+	operator unsigned long () const { return (millis() - ms) / msPerSec; }
+	elapsedSeconds & operator = (const elapsedSeconds &rhs) { ms = rhs.ms; return *this; }
+	elapsedSeconds & operator = (unsigned long val)         { ms = millis() - val * msPerSec; return *this; }
+	elapsedSeconds & operator -= (unsigned long val)    { ms += val * msPerSec; return *this; }
+	elapsedSeconds & operator += (unsigned long val)    { ms -= val * msPerSec; return *this; }
+	elapsedSeconds operator - (int val) const           { elapsedSeconds r(*this); r.ms += val * msPerSec; return r; }
+	elapsedSeconds operator - (unsigned int val) const  { elapsedSeconds r(*this); r.ms += val * msPerSec; return r; }
+	elapsedSeconds operator - (long val) const          { elapsedSeconds r(*this); r.ms += val * msPerSec; return r; }
+	elapsedSeconds operator - (unsigned long val) const { elapsedSeconds r(*this); r.ms += val * msPerSec; return r; }
+	elapsedSeconds operator + (int val) const           { elapsedSeconds r(*this); r.ms -= val * msPerSec; return r; }
+	elapsedSeconds operator + (unsigned int val) const  { elapsedSeconds r(*this); r.ms -= val * msPerSec; return r; }
+	elapsedSeconds operator + (long val) const          { elapsedSeconds r(*this); r.ms -= val * msPerSec; return r; }
+	elapsedSeconds operator + (unsigned long val) const { elapsedSeconds r(*this); r.ms -= val * msPerSec; return r; }
 };
 
 #endif // __cplusplus
